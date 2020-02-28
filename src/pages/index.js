@@ -1,9 +1,12 @@
-import Head from 'next/head';
-import content from '../content/home-page.md';
-import { useContext as useCustomContext, types } from '../context/TemplateContext';
+import Head from "next/head";
+import content from "../content/home-page.md";
+import { useAppContext, types } from "../context/AppContext";
 
+/**
+ * The homepage is populated from the Markdown files
+ */
 function HomePage() {
-  const [state, dispatch] = useCustomContext();
+  const [state, dispatch] = useAppContext();
   const { attributes, html } = content;
   return (
     <React.Fragment>
@@ -14,7 +17,12 @@ function HomePage() {
         <div dangerouslySetInnerHTML={{ __html: html }} />
         <input
           value={state.value}
-          onChange={e => dispatch({ type: types.SET_VALUE, payload: { value: e.target.value } })}
+          onChange={e =>
+            dispatch({
+              type: types.SET_VALUE,
+              payload: { value: e.target.value },
+            })
+          }
         />
       </section>
       <style jsx>{`

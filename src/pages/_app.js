@@ -1,6 +1,7 @@
-import Head from 'next/head';
-import Layout from '../components/layout';
-import { Provider as SampleProvider } from '../context/TemplateContext';
+import Head from "next/head";
+import Layout from "../components/layout";
+import { AppProvider } from "../context/AppContext";
+import "../styles.css";
 
 /**
  * This overides Next.js default `App`. This allows
@@ -17,14 +18,18 @@ function App({ Component, pageProps }) {
   return (
     <React.Fragment>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" key="viewport" />
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+          key="viewport"
+        />
+        <link rel="shortcut icon" href="/favicon.ico" key="favicon" />
       </Head>
-      <SampleProvider>
+      <AppProvider>
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </SampleProvider>
+      </AppProvider>
     </React.Fragment>
   );
 }
