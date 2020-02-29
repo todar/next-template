@@ -1,5 +1,5 @@
 import Head from "next/head";
-import content from "../../content/about-page.md";
+import content from "../content/about-page.md";
 
 function AboutPage() {
   const { attributes, html } = content;

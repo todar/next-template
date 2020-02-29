@@ -1,5 +1,5 @@
-const fs = require('fs');
-const blogPostsFolder = './src/content/blogPosts';
+const fs = require("fs");
+const blogPostsFolder = "./src/content/blogPosts";
 
 const getPathsForPosts = () => {
   return fs
@@ -8,11 +8,11 @@ const getPathsForPosts = () => {
       const trimmedName = blogName.substring(0, blogName.length - 3);
       return {
         [`/blog/post/${trimmedName}`]: {
-          page: '/blog/post/[slug]',
+          page: "/blog/post/[slug]",
           query: {
-            slug: trimmedName,
-          },
-        },
+            slug: trimmedName
+          }
+        }
       };
     })
     .reduce((acc, curr) => {
@@ -24,14 +24,14 @@ module.exports = {
   webpack: configuration => {
     configuration.module.rules.push({
       test: /\.md$/,
-      use: 'frontmatter-markdown-loader',
+      use: "frontmatter-markdown-loader"
     });
     return configuration;
   },
   async exportPathMap(defaultPathMap) {
     return {
       ...defaultPathMap,
-      ...getPathsForPosts(),
+      ...getPathsForPosts()
     };
-  },
+  }
 };

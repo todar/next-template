@@ -20,7 +20,7 @@ function HomePage() {
           onChange={e =>
             dispatch({
               type: types.SET_VALUE,
-              payload: { value: e.target.value },
+              payload: { value: e.target.value }
             })
           }
         />

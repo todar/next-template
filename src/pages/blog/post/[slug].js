@@ -1,15 +1,13 @@
-function Post(props) {
-  const {
-    html,
-    attributes: { thumbnail, title },
-  } = props.blogpost.default;
+const Post = ({ blogpost }) => {
+  if (!blogpost) return <div>not found</div>;
 
-  if (!props.blogpost) return <div>not found</div>;
+  const { html, attributes } = blogpost.default;
+
   return (
     <>
       <article>
-        <h1>{title}</h1>
-        <img src={thumbnail} />
+        <h1>{attributes.title}</h1>
+        <img src={attributes.thumbnail} />
         <div dangerouslySetInnerHTML={{ __html: html }} />
       </article>
       <style jsx>{`
@@ -22,12 +20,13 @@ function Post(props) {
       `}</style>
     </>
   );
-}
+};
 
-Post.getInitialProps = async context => {
-  const { slug } = context.query;
-  const blogpost = await import(`../../../content/blogPosts/${slug}.md`).catch(error => null);
-
+Post.getInitialProps = async ({ query }) => {
+  const { slug } = query;
+  const blogpost = await import(`../../../content/blogPosts/${slug}.md`).catch(
+    () => null
+  );
   return { blogpost };
 };
 

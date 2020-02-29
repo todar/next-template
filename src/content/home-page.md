@@ -1,14 +1,8 @@
 ---
-title: Home Page
+title: Home
 date: 2019-03-17T19:31:20.591Z
 ---
 
-## What is this?
+## Welcome to the Home Page
 
-Sample app using [NEXTjs](https://nextjs.org/), [Markdown](https://hmsk.github.io/frontmatter-markdown-loader/), and [Netflifycms](https://www.netlifycms.org/).
-
-This is some content stored in a Markdown File!
-
-## Bonus!
-
-This is also setup with a template for state managment using only `React.useReducer` and `React.useContext`.
+If you want to know more about this Next.js template go [here](https://github.com/todar/next-template).
